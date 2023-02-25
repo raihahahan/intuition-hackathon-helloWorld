@@ -1,5 +1,5 @@
 
-<img src="https://user-images.githubusercontent.com/46714781/221361044-c1b0d871-95ef-49d2-bbf3-bb1fe084753c.png" text-align=center height=400>
+<img src="https://user-images.githubusercontent.com/46714781/221361044-c1b0d871-95ef-49d2-bbf3-bb1fe084753c.png" align=center height=300>
 
 
 # Stockr.io
