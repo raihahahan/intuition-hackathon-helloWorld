@@ -3,7 +3,7 @@
 <br />
 <div align="center">
   <a href="">
-    <img src="https://user-images.githubusercontent.com/46714781/221361044-c1b0d871-95ef-49d2-bbf3-bb1fe084753c.png" alt="Logo" width="1000" height="750">
+    <img src="https://user-images.githubusercontent.com/46714781/221361044-c1b0d871-95ef-49d2-bbf3-bb1fe084753c.png" alt="Logo" width="400" height="300">
   </a>
 
 <h3 align="center">Stockr.io</h3>
