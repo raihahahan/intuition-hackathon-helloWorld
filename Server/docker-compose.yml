@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  webapi:
+    image: ${DOCKER_REGISTRY-}webapi
+    build:
+      context: .
+      dockerfile: WebAPI/Dockerfile
+
+  websocket:
+    image: ${DOCKER_REGISTRY-}websocket
+    build:
+      context: .
+      dockerfile: WebSocket/Dockerfile
+
