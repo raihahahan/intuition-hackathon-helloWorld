@@ -1,5 +1,5 @@
 
-![stockrio-low-resolution-logo-white-on-black-background](https://user-images.githubusercontent.com/46714781/221361044-c1b0d871-95ef-49d2-bbf3-bb1fe084753c.png | width="100" height="100")
+![stockrio-low-resolution-logo-white-on-black-background](https://user-images.githubusercontent.com/46714781/221361044-c1b0d871-95ef-49d2-bbf3-bb1fe084753c.png)
 
 
 # Stockr.io
