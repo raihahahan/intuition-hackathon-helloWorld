@@ -33,9 +33,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseCors();
 app.UseAuthorization();
-
+app.MapHub<InputResultHub>("hubs/messages");
 app.MapControllers();
 
 app.Run();
