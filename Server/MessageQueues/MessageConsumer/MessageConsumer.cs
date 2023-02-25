@@ -9,9 +9,8 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using Microsoft.Extensions.Configuration;
-using MessageQueues.MessageConsumer;
 
-namespace MessageConsumerService
+namespace MessageQueues.MessageConsumerService
 {
     public class MessageConsumer : IMessageConsumer
     {
