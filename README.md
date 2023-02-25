@@ -101,8 +101,9 @@ This project hacks various libraries and frameworks together in order to create 
 
 ### Built With
 
-* [![Python][React.js]][React-url]
-* [![React][React.js]][React-url]
+* React
+* Python
+* JavaScript
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
