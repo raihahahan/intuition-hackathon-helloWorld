@@ -1,3 +1,7 @@
+
+![stockrio-low-resolution-logo-white-on-black-background](https://user-images.githubusercontent.com/46714781/221361044-c1b0d871-95ef-49d2-bbf3-bb1fe084753c.png)
+
+
 # Stockr.io
 
 Stockr.io is an application that allows new traders to make informed decision about stock trading through Sentimental Analysis using Natural Language Processing.
@@ -10,3 +14,4 @@ It is not uncommon for common folks like you and I to be interested in dabbling 
 ## Implementation
 
 This project hacks various libraries and frameworks together in order to create a functioning application that is user-friendly.
+
