@@ -49,7 +49,7 @@ This project hacks various libraries and frameworks together in order to create 
 
 
 
-<!-- TABLE OF CONTENTS -->
+<!-- TABLE OF CONTENTS 
 <details>
   <summary>Table of Contents</summary>
   <ol>
@@ -74,7 +74,7 @@ This project hacks various libraries and frameworks together in order to create 
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
-
+-->
 
 
 <!-- ABOUT THE PROJECT -->
