@@ -1,4 +1,5 @@
 using Data;
+using MessageQueues.MessageProducer;
 using Microsoft.EntityFrameworkCore;
 using WebAPI.Services;
 
