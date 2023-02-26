@@ -4,12 +4,6 @@ import { Progress } from "@mantine/core";
 
 export function BuyOrSellLevel({ value }: { value: number }) {
   const { siteColors } = useTheme();
-
-  return (
-    <Progress
-      size="xl"
-      value={value * 100}
-      label={Math.round(value * 100) + "%"}
-    />
-  );
+  const val = ((value + 1) / 2) * 100;
+  return <Progress size="xl" value={val} label={Math.round(val) + "%"} />;
 }

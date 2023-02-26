@@ -10,12 +10,14 @@ export default function LoadingPage() {
   useEffect(() => {
     messageConnection.start((data) => {
       console.log(data);
-      inputResultApiClient.post(JSON.parse(data));
-      router.push(`/result/${router.query?.id}`);
+      inputResultApiClient.post(JSON.parse(data)).then((res) => {
+        router.push(`/result/${res?.id}`);
+        clearTimeout(timer);
+      });
     });
-    // setTimeout(() => {
-    //   router.push(`/result/${router.query?.id}`);
-    // }, 5000);
+    const timer = setTimeout(() => {
+      router.reload();
+    }, 10000);
   }, []);
   return (
     <div
