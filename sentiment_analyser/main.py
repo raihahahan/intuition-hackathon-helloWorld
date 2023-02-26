@@ -54,4 +54,4 @@ def get_sentiment(keyword):
     print(average_score)
     return [average_score, latest_news[:3]]
 
-get_sentiment("Biden")
+#get_sentiment("TSLA")
