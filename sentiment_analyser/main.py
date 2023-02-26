@@ -50,7 +50,8 @@ def get_sentiment(keyword):
 
     average_score = sum([score["compound"] for score in sentiment_scores])/len(sentiment_scores)
 
+
     print(average_score)
-    return sentiment_scores
+    return [average_score, latest_news[:3]]
 
 get_sentiment("Biden")
