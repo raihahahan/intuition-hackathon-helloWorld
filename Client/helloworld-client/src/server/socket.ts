@@ -26,6 +26,10 @@ class SocketConnection {
       setTimeout(this.start, 5000);
     }
   }
+
+  async stop() {
+    this.connection.off(CONFIG.SIGNALR_CLIENT_METHOD);
+  }
 }
 
 const messageConnection = new SocketConnection();

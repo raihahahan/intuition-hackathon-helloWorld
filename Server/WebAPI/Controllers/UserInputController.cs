@@ -51,14 +51,13 @@ namespace WebAPI.Controllers
         [HttpPost(nameof(Create))]
         public async Task<IActionResult> Create(UserInputDto userInputDto)
         {
+            UserInput userInput = new UserInput
+            {
+                TickerSymbol = userInputDto.TickerSymbol,
+                CreatedOn = DateTime.Now,
+            };
             try
             {
-                UserInput userInput = new UserInput
-                {
-                    TickerSymbol = userInputDto.TickerSymbol,
-                    CreatedOn = DateTime.Now,
-                };
-
                 _db.UserInputs.Add(userInput);
                 await _db.SaveChangesAsync();
                 bool res = await _userInputService.HandleCreateInput(userInput);
@@ -73,7 +72,7 @@ namespace WebAPI.Controllers
                 return BadRequest(new { error = ex.Message, innerException = ex.InnerException });
             }
 
-            return Ok("Input has been sent to message queue");
+            return Ok(new { id = userInput.Id });
         }
 
         [HttpDelete(nameof(Delete) + "/{id}")]

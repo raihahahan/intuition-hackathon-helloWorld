@@ -11,7 +11,7 @@ namespace Data.Models
     {
         public int Id { get; set; }
         public DateTime CreatedOn { get; set; }
-        public int UserInputId { get; set; }
+
         [ForeignKey(nameof(UserInputId))]
         public UserInput UserInput { get; set; } = null!;
     }

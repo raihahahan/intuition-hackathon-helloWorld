@@ -1,4 +1,6 @@
+using Data;
 using MessageHub;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +12,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSignalR();
 builder.Services.AddHostedService<Worker>();
+builder.Services.AddDbContext<DataDBContext>(options =>
+    options.UseInMemoryDatabase("inMemoryDB"));
 
 builder.Services.AddCors(options =>
 {

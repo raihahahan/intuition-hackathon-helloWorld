@@ -1,5 +1,8 @@
-﻿using MessageQueues.MessageConsumerService;
+﻿using Data;
+using Data.Models;
+using MessageQueues.MessageConsumerService;
 using Microsoft.AspNetCore.SignalR;
+using Newtonsoft.Json.Linq;
 using RabbitMQ.Client;
 using WebSocket.Hub;
 
@@ -10,9 +13,12 @@ public class Worker : BackgroundService
     private readonly IMessageConsumer _messageConsumer;
     private readonly IHubContext<InputResultHub, IInputResultHub> _messageHub;
     private readonly IConfiguration _configuration;
+    private readonly IServiceScopeFactory _factory;
+    private DataDBContext _db;
 
-    public Worker(ILogger<Worker> logger, IHubContext<InputResultHub, IInputResultHub> messageHub, IConfiguration configuration)
+    public Worker(ILogger<Worker> logger, IHubContext<InputResultHub, IInputResultHub> messageHub, IConfiguration configuration, IServiceScopeFactory factory)
     {
+        _factory = factory;
         _configuration = configuration;
         _logger = logger;
         _messageHub = messageHub;
@@ -24,6 +30,7 @@ public class Worker : BackgroundService
         password: string.IsNullOrEmpty(_configuration["RabbitMQPassword"]) ? ConnectionFactory.DefaultPass : _configuration["RabbitMQPassword"] ?? ConnectionFactory.DefaultPass,
         virtualHost: string.IsNullOrEmpty(_configuration["RabbitMQVirtualHost"]) ? ConnectionFactory.DefaultVHost : _configuration["RabbitMQVirtualHost"] ?? ConnectionFactory.DefaultVHost,
         onMessageReceived: onMessageReceived);
+        _factory = factory;
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -41,5 +48,7 @@ public class Worker : BackgroundService
     {
         _logger.LogInformation("Message received " + message);
         await _messageHub.Clients.All.SendInputResult(message);
+
+ 
     }
 }
