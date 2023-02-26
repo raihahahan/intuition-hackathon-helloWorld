@@ -27,7 +27,7 @@ export function MainTable({ res }: { res: UserInputResult[] }) {
   const rows = <TableRows res={finalRes} indexVarList={indexVarList} />;
   const { siteColors } = useTheme();
   return (
-    <div style={{ minWidth: "60vw", marginTop: 50 }}>
+    <div style={{ minWidth: "60vw", marginTop: 50, marginBottom: 50 }}>
       <TableTitleHeader
         styles={{ color: siteColors.text.primary }}
         indexVarList={indexVarList}

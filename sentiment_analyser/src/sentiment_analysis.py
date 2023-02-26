@@ -11,11 +11,9 @@ import os
 
 load_dotenv()
 
-
-
 API_KEY = os.getenv("API_KEY")
-#nltk.download('vader_lexicon')
-#nltk.download('punkt')
+nltk.download('vader_lexicon')
+nltk.download('punkt')
 
 sia = SentimentIntensityAnalyzer()
 
@@ -52,6 +50,6 @@ def get_sentiment(keyword):
 
 
     print(average_score)
-    return [average_score, latest_news[:3]]
+    return average_score#[average_score, latest_news[:3]]
 
 #get_sentiment("TSLA")

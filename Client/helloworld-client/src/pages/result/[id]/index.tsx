@@ -12,14 +12,17 @@ import { NextPageContext } from "next/types";
 import useTheme from "@/features/theme/theme-hooks";
 import Lottie from "react-lottie";
 import * as animationData from "../../../features/input/searching-blue.json";
-import { Text } from "@mantine/core";
+import { Button, Text } from "@mantine/core";
 import { fakeDataInputResult } from "@/features/inputResult/inputResult-fakedata";
 import { BuyOrSellLevel } from "@/features/inputResult/inputResult-components";
 import CommonNavButton from "@/common/components/buttons";
+import { summary } from "@/features/market/market-data";
 
 export default function ResultIndexPage({ res }: { res: UserInputResult }) {
   console.log(JSON.stringify(res));
+  const [readMore, setReadMore] = useState(false);
   const { siteColors, colorTheme } = useTheme();
+  const val = ((res.buyOrSell + 1) / 2) * 100;
   return (
     <div
       style={{
@@ -40,7 +43,7 @@ export default function ResultIndexPage({ res }: { res: UserInputResult }) {
           marginBottom: 30,
         }}
       >
-        {res.userInput?.tickerSymbol}
+        {res.userInput?.tickerSymbol?.toUpperCase()}
       </Text>
       <Text
         size="xl"
@@ -51,7 +54,8 @@ export default function ResultIndexPage({ res }: { res: UserInputResult }) {
           marginBottom: 30,
         }}
       >
-        Result: {res.buyOrSell < 50 ? "SELL" : "BUY"}
+        Result:{" "}
+        {val >= 40 && val <= 60 ? "HOLD" : res.buyOrSell < 0 ? "SELL" : "BUY"}
       </Text>
       <div
         style={{
@@ -80,6 +84,29 @@ export default function ResultIndexPage({ res }: { res: UserInputResult }) {
       <BuyOrSellLevel value={res.buyOrSell} />
       <br />
       <Text>{res.resultDescription}</Text>
+      {res.userInput?.tickerSymbol?.toUpperCase() in summary ? (
+        <div>
+          {readMore && (
+            <Text style={{ marginTop: 30 }}>
+              {
+                summary[
+                  res.userInput?.tickerSymbol?.toUpperCase() as
+                    | "AAPL"
+                    | "MSFT"
+                    | "META"
+                ]
+              }
+            </Text>
+          )}
+          <Button
+            style={{ marginLeft: -20 }}
+            variant="subtle"
+            onClick={() => setReadMore((i) => !i)}
+          >
+            Show {readMore ? "less" : "more"}...
+          </Button>
+        </div>
+      ) : null}
       <CommonNavButton
         extraStyles={{ marginTop: 40, marginBottom: 20 }}
         text="Try another symbol"
