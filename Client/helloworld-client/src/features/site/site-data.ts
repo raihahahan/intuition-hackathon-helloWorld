@@ -2,10 +2,13 @@ import { anchorTitles, routes } from "./site-types";
 
 const anchorData: { title: anchorTitles; anchorRoute: routes }[] = [
   { title: "", anchorRoute: "/" },
-  { title: "Input", anchorRoute: "/input" },
   {
     title: "History",
     anchorRoute: "/history",
+  },
+  {
+    title: "About",
+    anchorRoute: "/about",
   },
 ];
 

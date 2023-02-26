@@ -18,10 +18,10 @@ namespace Data
                 .HasOne(ui => ui.UserInput)
                 .WithOne();
 
-            modelBuilder.Entity<UserInputResult>()
-                .HasMany(ui => ui.KeywordToCount)
-                .WithOne()
-                .HasForeignKey(ui => ui.UserInputResultId);
+            //modelBuilder.Entity<UserInputResult>()
+            //    .HasMany(ui => ui.KeywordToCount)
+            //    .WithOne()
+            //    .HasForeignKey(ui => ui.UserInputResultId);
         }
 
     }

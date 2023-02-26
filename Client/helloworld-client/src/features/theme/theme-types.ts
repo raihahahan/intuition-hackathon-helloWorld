@@ -44,6 +44,7 @@ export type colorThemeByTheme = {
 };
 
 export type siteColorsType = {
+  themeColor: string;
   header: string;
   background: string;
   navbar: string;

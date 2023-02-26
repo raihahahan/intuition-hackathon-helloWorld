@@ -2,97 +2,93 @@
 using Data.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebAPI.Services;
 
 namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserInputController : ControllerBase
+    public class UserInputResultsController : ControllerBase
     {
         private readonly DataDBContext _db;
-        private readonly IUserInputService _userInputService;
 
-        public UserInputController(DataDBContext db, IUserInputService userInputService)
+        public UserInputResultsController(DataDBContext db)
         {
             _db = db;
-            _userInputService = userInputService;
         }
 
         [HttpGet(nameof(Get))]
-        public ActionResult<IEnumerable<UserInput>> Get()
+        public ActionResult<IEnumerable<UserInputResult>> Get()
         {
-            if (_db.UserInputs == null)
+            if (_db.UserInputsResult == null)
             {
                 return NotFound();
             }
 
-            var userInputs = _db.UserInputs.ToList();
-            return userInputs;
+            var userInputsResults = _db.UserInputsResult.Include(i => i.UserInput).ToList();
+            return userInputsResults;
         }
 
         [HttpGet(nameof(Get) + "/{id}")]
-        public async Task<ActionResult<UserInput>> GetUserInput(int id)
+        public async Task<ActionResult<UserInputResult>> GetUserInputResult(int id)
         {
-            if (_db.UserInputs == null)
+            if (_db.UserInputsResult == null)
             {
                 return NotFound();
             }
-            var userInput = await _db.UserInputs.FindAsync(id);
+            var userInputResult = await _db.UserInputsResult.Include(i => i.UserInput).FirstOrDefaultAsync(i => i.Id == id);
 
-            if (userInput == null)
+            if (userInputResult == null)
             {
                 return NotFound();
             }
 
-            return userInput;
+            return userInputResult;
         }
 
         [HttpPost(nameof(Create))]
-        public async Task<IActionResult> Create(UserInputDto userInputDto)
+        public async Task<IActionResult> Create(UserInputResultDto userInputResultDto)
         {
-            UserInput userInput = new UserInput
+            UserInputResult userInputResult = new UserInputResult
             {
-                TickerSymbol = userInputDto.TickerSymbol,
                 CreatedOn = DateTime.Now,
+                UserInputId = userInputResultDto.UserInputId,
+                ResultDescription = userInputResultDto.ResultDescription,
+                BuyOrSell = userInputResultDto.BuyOrSell,
+                //KeywordToCount = userInputResultDto.KeywordToCount,
             };
             try
             {
-                _db.UserInputs.Add(userInput);
+                _db.UserInputsResult.Add(userInputResult);
                 await _db.SaveChangesAsync();
-                bool res = await _userInputService.HandleCreateInput(userInput);
-
-                if (!res)
-                {
-                    throw new Exception("Failed to pass user input to queue.");
-                }
             }
             catch (Exception ex)
             {
                 return BadRequest(new { error = ex.Message, innerException = ex.InnerException });
             }
 
-            return Ok(new { id = userInput.Id });
+            return Ok(new { id = userInputResult.Id });
         }
 
         [HttpDelete(nameof(Delete) + "/{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            if (_db.UserInputs == null)
+            if (_db.UserInputsResult == null)
             {
                 return NotFound();
             }
 
             try
             {
-                var userInput = _db.UserInputs.Find(id);
+                var userInputResult = _db.UserInputsResult.Find(id);
 
-                if (userInput == null)
+                if (userInputResult == null)
                 {
                     return NotFound();
                 }
 
-                _db.UserInputs.Remove(userInput);
+                _db.UserInputsResult.Remove(userInputResult);
                 await _db.SaveChangesAsync();
                 return Ok();
             }

@@ -10,7 +10,7 @@ namespace Data.Models
     {
         public string ResultDescription { get; set; } = string.Empty;
         public float BuyOrSell { get; set; } // range -1 (sell) to 1 (buy)
-        
-        public List<KeywordToCount> KeywordToCount { get; set; } = new List<KeywordToCount>();
+        public int UserInputId { get; set; }
+        //public List<KeywordToCount> KeywordToCount { get; set; } = new List<KeywordToCount>();
     }
 }

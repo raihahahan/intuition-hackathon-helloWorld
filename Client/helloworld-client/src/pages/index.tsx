@@ -1,28 +1,21 @@
-import Head from "next/head";
-import Image from "next/image";
-import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.css";
-import { useEffect, useState } from "react";
-import messageConnection from "@/server/socket";
+import { InputPageComponents } from "@/features/input/input-components";
+import { breakpoints } from "@/features/theme/theme-data";
+import { useForm } from "@mantine/form";
 
-const inter = Inter({ subsets: ["latin"] });
-
-export default function Home() {
-  useEffect(() => {
-    messageConnection.start((data: string) => {
-      setMessages((msgs) => [...msgs, data]);
-    });
-  }, []);
-
-  const [messages, setMessages] = useState<string[]>([]);
-
+export default function InputIndexPage() {
   return (
-    <main className={styles.main}>
-      <div>
-        {messages.map((i) => {
-          return <div>{i}</div>;
-        })}
-      </div>
-    </main>
+    <div
+      style={{
+        padding: 20,
+        width: "90vw",
+        maxWidth: breakpoints.sm + 10,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <InputPageComponents />
+    </div>
   );
 }

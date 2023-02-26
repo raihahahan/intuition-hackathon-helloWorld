@@ -65,6 +65,7 @@ export const colorTheme: colorThemeByTheme = {
 export const siteColors = (theme: Theme): siteColorsType => {
   const color = colorTheme[theme];
   return {
+    themeColor: "#593d88",
     header: color.surface,
     background: color.background,
     navbar: color.surface,

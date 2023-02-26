@@ -8,8 +8,8 @@ export default function RectangleTitle({
   widthSize: number;
   type?: "default" | "dark";
 }) {
-  const WIDTH = 587;
-  const HEIGHT = 245;
+  const WIDTH = 1000;
+  const HEIGHT = 323;
   const RATIO = HEIGHT / WIDTH;
   let src;
   switch (type) {
@@ -30,6 +30,7 @@ export default function RectangleTitle({
       src={src as string}
       alt="Stockr"
       width={widthSize}
+      style={{ padding: 5, paddingRight: 18, paddingLeft: 18 }}
       height={RATIO * widthSize}
     />
   );
