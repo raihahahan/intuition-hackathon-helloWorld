@@ -132,6 +132,10 @@ You may also run the telegram bot (`telegram/`), but this runs independently on 
   npm install npm@latest -g
   ```
 * RabbitMQ: https://www.rabbitmq.com/download.html
+  * Once installed and run, go to `http://localhost:15672/` and create the following user:
+      * user: helloworld
+      * password: iHMn#Q2tBAfCV8c
+      * This credentials correspond to those in the `appsettings.json` of the .Net solution.
 * SQL Server (Community): https://www.microsoft.com/en-sg/sql-server/sql-server-downloads
 * Python3: https://www.python.org/downloads/
 
