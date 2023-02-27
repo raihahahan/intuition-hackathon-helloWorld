@@ -75,7 +75,16 @@ It is not uncommon for common folks like you and I to be interested in dabbling 
 
 ### Implementation
 
-This project hacks various libraries and frameworks together in order to create a functioning application that is user-friendly.
+This project hacks various libraries and frameworks together in order to create a functioning application that is user-friendly. Read below for an explanation for an explanation of the overarching system behind this project:
+
+1. User visits web client, enters their input and clicks the "Submit" button.
+2. This sends a `POST` request to the backend web API.
+3. The web API routes this data into a message queue.
+4. The Python NLP project listens to this queue, and removes the first item of the queue to process it.
+5. Once done processing, the Python program sends the output to the result queue.
+6. A web socket connected to both the web client and the result queue listens to this queue, and broadcasts the output back to the web client.
+
+![diagram](https://github.com/raihahahan/intuition-hackathon-helloWorld/blob/main/repo-assets/diagram-light.png?raw=true)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -209,6 +218,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 - [ ] Fix non-deterministic behaviour of state in Web Client (loading state sometimes doesn't change upon receiving message from RabbitMQ via SignalR)
 - [ ] Tidy up Models in backend so that we can wire up to a database (most likely SQL Server (Community)). We are currently using in-memory database.
 - [ ] Authentication (OAuth2)
+- [ ] Improve message queue implementation.
 
 See the [open issues](https://github.com/raihahahan/intuition-hackathon-helloWorld/issues) for a full list of proposed features (and known issues).
 
