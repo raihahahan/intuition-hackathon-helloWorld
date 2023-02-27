@@ -74,6 +74,12 @@ Stockr.io is an application that allows new traders to make informed decision ab
 ## About The Project
 ![demo-main](https://github.com/raihahahan/intuition-hackathon-helloWorld/blob/main/repo-assets/demo-main.PNG)
 
+### Usage
+
+1. Under "Pick a symbol", type in any stock ticker symbol.
+2. Click submit. The page will load for awhile.
+3. The results will shortly be shown on your screen: BUY, SELL or HOLD
+
 ### Purpose
 
 It is not uncommon for common folks like you and I to be interested in dabbling in the stock market, eager to flip a profit. But for most of us, we do not know where to begin. With that in mind, the team at Stockr.io decided to implement an interactive application that allows users to input a ticker symbol of their choice and obtain relevant data about how valuable the stock is perceived through various news sources.
@@ -177,10 +183,7 @@ pip install -r requirements.txt
 API_KEY=YOUR_TELE_API_KEY
 ```
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- USAGE EXAMPLES -->
-## Usage
+## Running local environment
 
 * Open four terminals (5 if with Telegram bot. We will improve this as part of the roadmap using docker compose) and run the following commands for each:
 1. .Net Web API
@@ -213,7 +216,7 @@ cd telegram
 python3 main.py
 ```
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+* Go to `localhost:3000` to access the local environment of the web client.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
