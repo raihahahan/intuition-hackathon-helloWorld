@@ -166,7 +166,7 @@ API_KEY=YOUR_TELE_API_KEY
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-* Open four terminals (we will improve this as part of the roadmap) and run the following commands for each:
+* Open four terminals (5 if with Telegram bot. We will improve this as part of the roadmap using docker compose) and run the following commands for each:
 1. .Net Web API
 ```sh
 cd Server/WebAPI
