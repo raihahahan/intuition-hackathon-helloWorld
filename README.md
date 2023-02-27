@@ -11,6 +11,10 @@
     Stockr.io is an application that allows new traders to make informed decision about stock trading through Sentimental Analysis using Natural Language Processing. 
     This was a submission for iNTUITION v9.0 Hackathon 2023 (https://intuition.ieeentu.com), but contributors are welcomed to continue developing this project.
     <br />
+    <br />
+    **<b>Disclaimer: This is just a project for fun. DO NOT solely use this for financial advice.</b>**
+    <br />
+    <br />
     <a href="https://github.com/raihahahan/intuition-hackathon-helloWorld"><strong>Explore the docs »</strong></a>
     <br />
     <br />
