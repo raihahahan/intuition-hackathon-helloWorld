@@ -10,14 +10,14 @@
   <p align="center">
     Stockr.io is an application that allows new traders to make informed decision about stock trading through Sentimental Analysis using Natural Language Processing.
     <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/raihahahan/intuition-helloWorld"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
+    <a href="https://github.com/raihahahan/intuition-helloWorld">View Demo</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
+    <a href="https://github.com/raihahahan/intuition-helloWorld/issues">Report Bug</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
+    <a href="https://github.com/raihahahan/intuition-helloWorld/issues">Request Feature</a>
   </p>
 </div>
 
@@ -34,12 +34,6 @@ Stockr.io is an application that allows new traders to make informed decision ab
 *** Don't forget to give the project a star!
 *** Thanks again! Now go create something AMAZING! :D
 -->
-
-
-
-
-
-
 
 <!-- TABLE OF CONTENTS 
 <details>
@@ -88,74 +82,136 @@ This project hacks various libraries and frameworks together in order to create 
 
 ### Built With
 
-* React
-* Python
-* JavaScript
-* RabbitMQ
-* 
+* Backend: C# .NET 6
+* Frontend: React Nextjs
+* Database: SQL Server (SQLEXPRESS)
+* NLP: Python
+* Message Queue: RabbitMQ
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- GETTING STARTED -->
 ## Getting Started
+There is a total of four programs to be run in the CLI at the same time for this project to work properly. They may however run independently on its own:
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+1. Web API: `Server/WebAPI`
+2. Web socket: `Server/WebSocket`
+3. Web client: `Client/helloworld-client`
+4. Python NLP project: `sentiment-analyser/`
+
+You may also run the telegram bot (`telegram/`), but this runs independently on its own.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
+* .Net 6: https://dotnet.microsoft.com/en-us/download
 * npm
   ```sh
   npm install npm@latest -g
   ```
+* RabbitMQ: https://www.rabbitmq.com/download.html
+* SQL Server (Community): https://www.microsoft.com/en-sg/sql-server/sql-server-downloads
+* Python3: https://www.python.org/downloads/
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/raihahahan/intuition-hackathon-helloWorld.git
+   cd intuition-hackathon-helloWorld
    ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
+   
+2. C# dotnet server
+```sh
+cd Server
+dotnet restore
+```
+
+3. Nextjs Web client
+```sh
+cd Client
+npm install
+```
+* Get your rapidapi keys from https://rapidapi.com/twelvedata/api/twelve-data1/. This is for the list of stock tickers.
+* Create `.env.local` to the root of the WebClient folder and add the following lines:
+```sh
+NEXT_PUBLIC_RAPID_API_KEY=YOUR_API_KEY
+NEXT_PUBLIC_RAPID_API_HOST=YOUR_API_HOST
+```
+
+4. Python NLP project
+```sh
+cd sentiment-analyser
+pip install -r requirements.txt
+```
+* Get your newsapi API keys from https://newsapi.org/register. This is to retrieve the news sources to be added as arguments to the NLP model.
+* Add a `.env` file to the root of this Python project and add the following lines:
+```sh
+apiKey=YOUR_NEWSAPI_KEY
+```
+
+5. Telegram bot
+```sh
+cd telegram
+pip install -r requirements.txt
+```
+* Get your Telegram API key from https://core.telegram.org/api/obtaining_api_id.
+* Add a `.env` file to the root of this Python project and add the following lines:
+```sh
+API_KEY=YOUR_TELE_API_KEY
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+* Open four terminals (we will improve this as part of the roadmap) and run the following commands for each:
+1. .Net Web API
+```sh
+cd Server/WebAPI
+dotnet run
+```
+
+2. .Net Web Socket
+```sh
+cd Server/WebSocket
+dotnet run
+```
+
+3. React Nextjs
+```sh
+cd Client/helloworld-client
+npm run dev
+```
+
+4. Python NLP project
+```sh
+cd sentiment-analyser
+python3 src/main.py
+```
+
+5. Python Telegram bot
+```sh
+cd telegram
+python3 main.py
+```
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
+- [ ] Fix dockerization (issues with CORS)
+- [ ] Fix non-deterministic behaviour of state in Web Client (loading state sometimes doesn't change upon receiving message from RabbitMQ via SignalR)
+- [ ] Tidy up Models in backend so that we can wire up to a database (most likely SQL Server (Community)). We are currently using in-memory database.
+- [ ] Authentication (OAuth2)
 
-See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/raihahahan/intuition-hackathon-helloWorld/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -173,17 +229,12 @@ Don't forget to give the project a star! Thanks again!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- LICENSE -->
 ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
